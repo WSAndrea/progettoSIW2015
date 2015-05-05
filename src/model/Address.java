@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-@Entity//ciao
+@Entity//ciao vvvvvv
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"street","city"}))
 public class Address {
 	@Id
