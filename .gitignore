@@ -1,0 +1,9 @@
+/build/
+/bin/
+.settings/
+*.class
+.project
+.classpath
+Thumbs.db
+Desktop.ini
+
