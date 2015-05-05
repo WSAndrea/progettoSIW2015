@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+// abbozzo di amministratore, da rivedere completamente
 @Entity
 
 public class Admin {
