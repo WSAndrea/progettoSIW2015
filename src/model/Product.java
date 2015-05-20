@@ -27,9 +27,9 @@ public class Product {
 	@Column
 	private Float price;
 	@Column
-	private Integer quantity;
+	private Integer stockquantity;
 	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
-	@JoinColumn(name = "product_id")
+	@JoinColumn(name = "product_code")
 	private List<OrderLine> orderLines;
 	@ManyToMany(mappedBy = "products", cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
 	private List<Provider> providers;
@@ -41,7 +41,7 @@ public class Product {
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.quantity = quantity;
+		this.stockquantity = quantity;
 		this.orderLines = orderLines;
 		this.providers = providers;
 	}
@@ -82,12 +82,16 @@ public class Product {
 		this.description = description;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
+	public Integer getStockQuantity() {
+		return stockquantity;
 	}
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setStockQuantity(Integer quantity) {
+		this.stockquantity = quantity;
+	}
+	
+	public Float getPrice() {
+		return this.price;
 	}
 
 	public void setPrice(Float price) {

@@ -1,72 +1,54 @@
 package model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-// abbozzo di amministratore, da rivedere completamente
-@Entity
 
+// classe admin base
+@Entity
 public class Admin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Column
-	private String firstname;
-	@Column
-	private String lastname;
+	private String username;
 	@Column
 	private String email;
-	@Column
-	private Date registrationdate;
-	
-	public Admin(Long id, String firstname, String lastname, String email,
-			Date registrationdate) {
+
+	public Admin(Long id, String username, String email) {
 		super();
 		this.id = id;
-		this.firstname = firstname;
-		this.lastname = lastname;
+		this.username = username;
 		this.email = email;
-		this.registrationdate = registrationdate;
 	}
-	
+
 	public Admin() {
-		
+
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getFirstname() {
-		return firstname;
+
+	public String getUserName() {
+		return this.username;
 	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+
+	public void setUserName(String username) {
+		this.username = username;
 	}
-	public String getLastname() {
-		return lastname;
-	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getRegistrationdate() {
-		return registrationdate;
-	}
-	public void setRegistrationdate(Date registrationdate) {
-		this.registrationdate = registrationdate;
-	}
-	
-	
 }
