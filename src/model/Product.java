@@ -10,10 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 
 @Entity
+@NamedQuery(name="getAllProducts", query = "SELECT p from Product p")
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,20 +36,28 @@ public class Product {
 	@ManyToMany(mappedBy = "products", cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
 	private List<Provider> providers;
 
-	public Product(Long id, String code, String name, String description, Float price, Integer quantity, List<OrderLine> orderLines, List<Provider> providers) {
+	public Product(Long id, String code, String name, String description, Float price, Integer stockquantity, List<OrderLine> orderLines, List<Provider> providers) {
 		super();
 		this.id = id;
 		this.code = code;
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.stockquantity = quantity;
+		this.stockquantity = stockquantity;
 		this.orderLines = orderLines;
 		this.providers = providers;
 	}
 
 	public Product() {
 
+	}
+
+	public Product(String name, String code, Float price, String description, Integer stockquantity) {
+		this.code = code;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.stockquantity = stockquantity;
 	}
 
 	public Long getId() {
@@ -89,7 +99,7 @@ public class Product {
 	public void setStockQuantity(Integer quantity) {
 		this.stockquantity = quantity;
 	}
-	
+
 	public Float getPrice() {
 		return this.price;
 	}

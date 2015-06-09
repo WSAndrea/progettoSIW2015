@@ -25,6 +25,9 @@ public class Orders {
 	@Column
 	@Temporal(TemporalType.DATE)
 	private Date creationTime;
+	@Column
+	@Temporal(TemporalType.DATE)
+	private Date evasionTime;
 	@ManyToOne
 	private Customer customer;
 	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, fetch = FetchType.EAGER)
@@ -101,6 +104,18 @@ public class Orders {
 	public void setCreationTime(Date creationTime) {
 		this.creationTime = creationTime;
 	}
+
+	public Date getEvasionTime() {
+		return evasionTime;
+	}
+
+
+
+	public void setEvasionTime(Date evasionTime) {
+		this.evasionTime = evasionTime;
+	}
+
+
 
 	public Customer getCustomer() {
 		return customer;
