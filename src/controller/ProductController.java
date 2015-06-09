@@ -29,6 +29,11 @@ public class ProductController {
 	@EJB
 	private ProductFacade productFacade;
 	
+	public String createProduct() {
+		this.product = productFacade.createProduct(name, code, price, description, stockquantity);
+		return "product";
+	}
+	
 	public String retrieveAllProducts() {
 		this.products = productFacade.getAllProducts();
 		return "products";
