@@ -16,7 +16,7 @@ public class CustomerFacade {
 
 	public Customer createCustomer(String firstName, String lastName, String email, 
 			String phoneNumber, Date dateOfBirth, Address address) {
-		Date registrationDate = new Date();
+		
 		Customer customer = new Customer(); // da valutare creazione di un costruttore in Customer
 		customer.setFirstName(firstName);
 		customer.setLastName(lastName);
@@ -24,6 +24,7 @@ public class CustomerFacade {
 		customer.setPhoneNumber(phoneNumber);
 		customer.setAddress(address);
 		customer.setDateOfBirth(dateOfBirth);
+		Date registrationDate = new Date();
 		customer.setRegistrationDate(registrationDate);
 		em.persist(customer);
 		return customer;

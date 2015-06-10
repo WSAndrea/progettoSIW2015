@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
@@ -12,6 +13,7 @@ import model.ProductFacade;
 import model.Provider;
 
 @ManagedBean
+@SessionScoped
 public class ProductController {
 
 	@ManagedProperty(value="#{param.id}")
@@ -25,20 +27,20 @@ public class ProductController {
 	private List<Provider> providers;
 	private Product product;
 	private List<Product> products;
-	
+
 	@EJB
 	private ProductFacade productFacade;
-	
+
 	public String createProduct() {
 		this.product = productFacade.createProduct(name, code, price, description, stockquantity);
 		return "product";
 	}
-	
+
 	public String retrieveAllProducts() {
 		this.products = productFacade.getAllProducts();
-		return "products";
+		return "catalogo";
 	}
-	
+
 	public String getProduct(Long id) {
 		this.product = productFacade.findProduct(id);
 		return "product";

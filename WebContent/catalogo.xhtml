@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+<title>Catalogo</title>
+</head>
+<body>
+	<h:form>
+		<ul>
+			<ui:repeat value="#{productController.products}" var="product">
+				<li><h:outputLink value="showProduct.xhtml">
+						<h:outputText value="#{product.name}" />
+					</h:outputLink></li>
+			</ui:repeat>
+		</ul>
+	</h:form>
+</body>
+</html>
