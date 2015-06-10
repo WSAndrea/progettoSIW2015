@@ -14,24 +14,25 @@ public class ProductFacade {
 
 	@PersistenceContext(unitName = "siw2015-unit")
 	private EntityManager em;
-	
+
 	public Product createProduct(String name, String code, Float price, String description, Integer stockquantity) throws EJBTransactionRolledbackException{
 		Product product = new Product(name, code, price, description, stockquantity);
 		em.persist(product);
 		return product;
 	}
-	
+
 	public List<Product> getAllProducts() {
 		CriteriaQuery<Product> query = em.getCriteriaBuilder().createQuery(Product.class);
 		query.select(query.from(Product.class));
 		List<Product> products = em.createQuery(query).getResultList();
 		return products;
 	}
-	
+
 	public Product findProduct(Long id) {
-		return em.find(Product.class, id);
+		Product product = em.find(Product.class, id);
+		return product;
 	}
-	
+
 	public void addProvider(Long id, Provider provider) {
 		Product product = em.find(Product.class, id);
 		if(product.getProviders()==null) {

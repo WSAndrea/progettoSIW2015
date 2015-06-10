@@ -2,11 +2,14 @@ package controller;
 
 import java.util.List;
 
+
+
 import javax.ejb.EJB;
 import javax.ejb.EJBTransactionRolledbackException;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+
 
 import model.OrderLine;
 import model.Product;
@@ -47,7 +50,7 @@ public class ProductController {
 		return "catalogo";
 	}
 
-	public String getProduct(Long id) {
+	public String findProduct() {
 		this.product = productFacade.findProduct(id);
 		return "product";
 	}

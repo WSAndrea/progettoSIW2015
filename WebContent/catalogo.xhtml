@@ -7,15 +7,17 @@
 <title>Catalogo</title>
 </head>
 <body>
-	<h:form>
-		<ul>
-			<ui:repeat value="#{productController.products}" var="product">
-				<li><h:outputLink value="showProduct.xhtml">
-						<h:outputText value="#{product.name}" />
-					</h:outputLink></li>
-			</ui:repeat>
-		</ul>
-		<h:link value="Torna alla pagina iniziale" outcome="index"></h:link>
-	</h:form>
+	<f:view>
+		<h:form>
+			<ul>
+				<ui:repeat value="#{productController.products}" var="product">
+					<li><h:commandLink action="#{productController.findProduct}">${product.name}
+						<f:param name="id" value="#{product.id}" />
+						</h:commandLink></li>
+				</ui:repeat>
+			</ul>
+			<h:link value="Torna alla pagina iniziale" outcome="index"></h:link>
+		</h:form>
+	</f:view>
 </body>
 </html>
