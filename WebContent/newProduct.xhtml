@@ -36,14 +36,16 @@
 				Quantità in stock:
 				<h:inputText value="#{productController.stockquantity}"
 					required="true" requiredMessage="Parametro obbligatorio"
-					converterMessage="La quantità dev'essere un numero"
+					converterMessage="La quantità deve essere un numero"
 					id="stockquantity" />
 				<h:message for="stockquantity" />
 			</div>
 			<div>
-				<h:commandButton value="Submit"
+				<h:commandButton value="Conferma"
 					action="#{productController.createProduct}" />
+				<h:button value="Annulla" outcome="adminPanel" />
 			</div>
+
 		</h:form>
 	</f:view>
 </body>

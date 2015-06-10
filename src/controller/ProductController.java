@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.EJBTransactionRolledbackException;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -32,8 +33,13 @@ public class ProductController {
 	private ProductFacade productFacade;
 
 	public String createProduct() {
-		this.product = productFacade.createProduct(name, code, price, description, stockquantity);
-		return "product";
+		try {
+			this.product = productFacade.createProduct(name, code, price, description, stockquantity);
+		}
+		catch(EJBTransactionRolledbackException e) {
+			return "productExc";
+		}
+		return "confirmedProduct";
 	}
 
 	public String retrieveAllProducts() {

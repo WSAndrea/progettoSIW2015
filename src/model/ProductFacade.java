@@ -3,6 +3,7 @@ package model;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.ejb.EJBTransactionRolledbackException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +15,7 @@ public class ProductFacade {
 	@PersistenceContext(unitName = "siw2015-unit")
 	private EntityManager em;
 	
-	public Product createProduct(String name, String code, Float price, String description, Integer stockquantity) {
+	public Product createProduct(String name, String code, Float price, String description, Integer stockquantity) throws EJBTransactionRolledbackException{
 		Product product = new Product(name, code, price, description, stockquantity);
 		em.persist(product);
 		return product;
