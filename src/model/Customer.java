@@ -31,7 +31,6 @@ public class Customer {
 	@Column
 	private String phoneNumber;
 	@Column
-	@Temporal(TemporalType.DATE)	
 	private Date dateOfBirth;
 	@Column
 	@Temporal(TemporalType.DATE)
@@ -42,11 +41,11 @@ public class Customer {
 	private List<Orders> orders;
 
 	public Customer() {
-		
+
 	}
 
 	public Customer(Long id, String firstName, String lastName, String email,
-			String phoneNumber, Date dateOfBirth, Date registrationDate,
+			String phoneNumber, Date dateOfBirth ,Date registrationDate,
 			Address address, List<Orders> orders) {
 		super();
 		this.id = id;
@@ -60,7 +59,7 @@ public class Customer {
 		this.orders = orders;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -100,28 +99,12 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
 	public Date getRegistrationDate() {
 		return registrationDate;
 	}
 
 	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
 	}
 
 	public List<Orders> getOrders() {
@@ -132,75 +115,19 @@ public class Customer {
 		this.orders = orders;
 	}
 
-	@Override
-	public String toString() {
-		return  "\n" + "ID: " + id + "\n"
-				+ "Name: " + firstName +"\n"
-				+ "Surname: " + lastName + "\n"
-				+ "e-mail: " + email + "\n"
-				+ "Phone number: " + phoneNumber + "\n"
-				+ "Date of birth: " + dateOfBirth + "\n"
-				+ "Registration date: " + registrationDate + "\n"
-				+ "Address: " + address + "\n"
-				+ "Orders: " + orders + "\n";
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Customer other = (Customer) obj;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
-			return false;
-		if (dateOfBirth == null) {
-			if (other.dateOfBirth != null)
-				return false;
-		} else if (!dateOfBirth.equals(other.dateOfBirth))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (firstName == null) {
-			if (other.firstName != null)
-				return false;
-		} else if (!firstName.equals(other.firstName))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (lastName == null) {
-			if (other.lastName != null)
-				return false;
-		} else if (!lastName.equals(other.lastName))
-			return false;
-		if (orders == null) {
-			if (other.orders != null)
-				return false;
-		} else if (!orders.equals(other.orders))
-			return false;
-		if (phoneNumber == null) {
-			if (other.phoneNumber != null)
-				return false;
-		} else if (!phoneNumber.equals(other.phoneNumber))
-			return false;
-		if (registrationDate == null) {
-			if (other.registrationDate != null)
-				return false;
-		} else if (!registrationDate.equals(other.registrationDate))
-			return false;
-		return true;
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
 
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 }

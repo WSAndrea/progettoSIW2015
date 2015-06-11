@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Nuovo Cliente</title>
+</head>
+<body>
+	<f:view>
+		<h:form>
+			<div>
+				nome:
+				<h:inputText value="#{customerController.firstName}" required="true"
+					requiredMessage="Parametro obbligatorio" id="firstName" />
+				<h:message for="firstName" />
+			</div>
+			<div>
+				cognome:
+				<h:inputText value="#{customerController.lastName}" required="true"
+					requiredMessage="Parametro obbligatorio" id="lastName" />
+				<h:message for="lastName" />
+			</div>
+			<div>
+				email:
+				<h:inputText value="#{customerController.email}" required="true"
+					requiredMessage="Parametro obbligatorio"
+					converterMessage="Inserisci una mail valida" id="email" />
+				<h:message for="email" />
+			</div>
+			<div>
+				numero di telefono:
+				<h:inputText value="#{customerController.phoneNumber}"
+					required="true" requiredMessage="Parametro obbligatorio"
+					converterMessage="Inserisci un numero di telefono valido"
+					id="phoneNumber" />
+				<h:message for="phoneNumber" />
+
+			</div>
+			<div>
+				città:
+				<h:inputText value="#{customerController.city}" required="true"
+					requiredMessage="Parametro obbligatorio" converterMessage=""
+					id="city" />
+				<h:message for="city" />
+
+			</div>
+			<div>
+				via:
+				<h:inputText value="#{customerController.street}" required="true"
+					requiredMessage="Parametro obbligatorio" converterMessage=""
+					id="street" />
+				<h:message for="street" />
+
+			</div>
+			<div>
+				zipcode:
+				<h:inputText value="#{customerController.zipcode}" required="true"
+					requiredMessage="Parametro obbligatorio" converterMessage=""
+					id="zipcode" />
+				<h:message for="zipcode" />
+
+			</div>
+			<div>
+				Stato:
+				<h:inputText value="#{customerController.country}" required="true"
+					requiredMessage="Parametro obbligatorio" converterMessage=""
+					id="country" />
+				<h:message for="country" />
+
+			</div>
+
+			<div>
+				giorno di nascita:
+				<h:inputText value="#{customerController.day}" required="true"
+					requiredMessage="Parametro obbligatorio"
+					converterMessage="Deve essere un numero tra 1 e 31" id="day" />
+				<h:message for="day" />
+			</div>
+
+			<div>
+				mese di nascita:
+				<h:inputText value="#{customerController.month}" required="true"
+					requiredMessage="Parametro obbligatorio"
+					converterMessage="Deve essere un numero tra 1 e 12" id="month" />
+				<h:message for="month" />
+			</div>
+			<div>
+				anno di nascita:
+				<h:inputText value="#{customerController.year}" required="true"
+					requiredMessage="Parametro obbligatorio" converterMessage=""
+					id="year" />
+				<h:message for="year" />
+			</div>
+
+			<div>
+				<h:commandButton value="Conferma"
+					action="#{customerController.createCustomer}" />
+				<h:button value="Annulla" outcome="adminPanel" />
+			</div>
+
+		</h:form>
+	</f:view>
+</body>
+</html>
