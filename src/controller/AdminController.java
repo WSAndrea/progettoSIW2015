@@ -5,15 +5,16 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 import exception.InvalidLoginException;
 import model.Admin;
 import model.AdminFacade;
 
 @ManagedBean
+@SessionScoped
 public class AdminController {
 
-	@ManagedProperty("#{param.id}")
 	private Long id;
 	private Admin admin;
 	private String email;
