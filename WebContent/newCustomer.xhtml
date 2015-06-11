@@ -28,7 +28,6 @@
 			</div>
 			<div>
 				numero di telefono:
-<<<<<<< HEAD
 				<h:inputText value="#{customerController.phoneNumber}"
 					required="true" requiredMessage="Parametro obbligatorio"
 					converterMessage="Inserisci un numero di telefono valido"
@@ -96,77 +95,6 @@
 				<h:commandButton value="Conferma"
 					action="#{customerController.createCustomer}" />
 				<h:button value="Annulla" outcome="adminPanel" />
-=======
-				<h:inputText value="#{customerController.phoneNumber}" required="true"
-					requiredMessage="Parametro obbligatorio"
-					converterMessage="Inserisci un numero di telefono valido" id="phoneNumber" />
-				<h:message for="phoneNumber" />
-
-			</div>
-				<div>
-				via:
-				<h:inputText value="#{customerController.via}" required="true"
-					requiredMessage="Parametro obbligatorio"
-					converterMessage="" id="via" />
-				<h:message for="via" />
-
-			</div>
-				<div>
-				numero civico:
-				<h:inputText value="#{customerController.numeroCivico}" required="true"
-					requiredMessage="Parametro obbligatorio"
-					converterMessage="" id="numeroCivico" />
-				<h:message for="numeroCivico" />
-
-			</div>
-				<div>
-				cap:
-				<h:inputText value="#{customerController.cap}" required="true"
-					requiredMessage="Parametro obbligatorio"
-					converterMessage="" id="cap" />
-				<h:message for="cap" />
-
-			</div>
-			<div>
-				Stato:
-				<h:inputText value="#{customerController.state}" required="true"
-					requiredMessage="Parametro obbligatorio"
-					converterMessage="" id="state" />
-				<h:message for="state" />
-
-			</div>
-			
-			<div>
-				giorno di nascita:
-				<h:inputText value="#{customerController.giornoDiNascita}"
-					required="true" requiredMessage="Parametro obbligatorio"
-					converterMessage="Deve essere un numero tra 1 e 31"
-					id="giornoDiNascita" />
-				<h:message for="giornoDiNascita" />
-			</div>
-			
-			<div>
-				mese di nascita:
-				<h:inputText value="#{customerController.meseDiNascita}"
-					required="true" requiredMessage="Parametro obbligatorio"
-					converterMessage="Deve essere un numero tra 1 e 12"
-					id="meseDiNascita" />
-				<h:message for="meseDiNascita" />
-			</div>
-			<div>
-				anno di nascita:
-				<h:inputText value="#{customerController.annoDiNascita}"
-					required="true" requiredMessage="Parametro obbligatorio"
-					converterMessage=""
-					id="annoDiNascita" />
-				<h:message for="annoDiNascita" />
-			</div>
-			
-			<div>
-				<h:commandButton value="Conferma"
-					action="#{customerController.createCustomer}" />
-				<h:button value="Annulla" outcome="RegistrazioneCustomer" />
->>>>>>> refs/remotes/origin/master
 			</div>
 
 		</h:form>
