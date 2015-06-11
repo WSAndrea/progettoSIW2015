@@ -1,8 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en" xmlns:h="http://java.sun.com/jsf/html"
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
 <title>Catalogo</title>
 </head>
@@ -11,12 +12,11 @@
 		<h:form>
 			<ul>
 				<ui:repeat value="#{productController.products}" var="product">
-					<li><h:commandLink action="#{productController.findProduct}">${product.name}
-						<f:param name="id" value="#{product.id}" />
-						</h:commandLink></li>
+					<li><h:link value="#{product.name}"
+							outcome="ricerca.xhtml?id=#{product.id}" /></li>
 				</ui:repeat>
 			</ul>
-			<h:link value="Torna alla pagina iniziale" outcome="index"></h:link>
+			<h:link value="Torna alla pagina principale" outcome="index" />
 		</h:form>
 	</f:view>
 </body>

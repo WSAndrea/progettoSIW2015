@@ -28,7 +28,7 @@ public class ProductFacade {
 		return products;
 	}
 
-	public Product findProduct(Long id) {
+	public Product getProduct(Long id) {
 		Product product = em.find(Product.class, id);
 		return product;
 	}

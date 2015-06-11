@@ -92,12 +92,12 @@ public class Product {
 		this.description = description;
 	}
 
-	public Integer getStockQuantity() {
+	public Integer getStockquantity() {
 		return stockquantity;
 	}
 
-	public void setStockQuantity(Integer quantity) {
-		this.stockquantity = quantity;
+	public void setStockquantity(Integer stockquantity) {
+		this.stockquantity = stockquantity;
 	}
 
 	public Float getPrice() {

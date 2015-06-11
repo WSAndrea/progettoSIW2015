@@ -6,14 +6,16 @@
 </head>
 <body>
 	<f:view>
-		<h1>Navigazione sito</h1>
-		<ul>
-			<li><h:link value="Pannello Amministratori" outcome="adminPanel"></h:link></li>
-			<li><h:form>
-					<h:commandLink action="#{productController.retrieveAllProducts}"
-						value="Catalogo" />
-				</h:form></li>
-		</ul>
+		<h:form>
+			<h1>Navigazione sito</h1>
+			<ul>
+				<li><h:link value="Pannello Amministratori"
+						outcome="adminPanel"></h:link></li>
+				<li><h:commandLink
+						action="#{productController.retrieveAllProducts}" value="Catalogo" />
+				</li>
+			</ul>
+		</h:form>
 	</f:view>
 </body>
 </html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	>
 
 <head>
 <title>Descrizione Prodotto</title>
@@ -14,9 +15,6 @@
 			<div>Codice prodotto: ${productController.product.code}</div>
 			<div>Prezzo: ${productController.product.price}</div>
 			<div>Descrizione : ${productController.product.description}</div>
-			<div>Quantità in magazzino:
-				${productController.product.stockquantity}</div>
-
 		</h:form>
 		<h:form>
 			<h:commandLink action="#{productController.retrieveAllProducts}"
