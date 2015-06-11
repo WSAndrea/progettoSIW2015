@@ -2,11 +2,11 @@ package controller;
 
 import java.util.List;
 
-
-
 import javax.ejb.EJB;
 import javax.ejb.EJBTransactionRolledbackException;
-import javax.enterprise.context.SessionScoped;
+
+
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
@@ -17,7 +17,7 @@ import model.ProductFacade;
 import model.Provider;
 
 @ManagedBean
-@SessionScoped
+
 public class ProductController {
 
 	@ManagedProperty(value="#{param.id}")
@@ -51,8 +51,14 @@ public class ProductController {
 	}
 
 	public String findProduct() {
-		this.product = productFacade.findProduct(id);
+		this.product = productFacade.getProduct(this.id);
+		System.out.println("TEST PROVA TEST PROVA");
 		return "product";
+	}
+
+	public void findProduct(String id) {
+		this.id = Long.parseLong(id);
+		this.product = productFacade.getProduct(this.id);
 	}
 
 	public Long getId() {

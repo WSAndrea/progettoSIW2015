@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+<title>Dettagli prodotto</title>
+</head>
+<body>
+	<f:view>
+		<h:form>
+			<h:outputText value="#{productController.findProduct(param['id'])}" />
+			<div>Nome: ${productController.product.name}</div>
+			<div>Codice prodotto: ${productController.product.code}</div>
+			<div>Prezzo: ${productController.product.price}€</div>
+			<div>Descrizione: ${productController.product.description}</div>
+			<div>Quantità in magazzino:
+				${productController.product.stockquantity}</div>
+			<h:commandLink action="#{productController.retrieveAllProducts}"
+				value="Torna al Catalogo" />
+		</h:form>
+	</f:view>
+</body>
+</html>

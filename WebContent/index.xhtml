@@ -6,6 +6,7 @@
 </head>
 <body>
 	<f:view>
+<<<<<<< HEAD
 		<h1>Navigazione sito</h1>
 		<ul>
 			<li><h:link value="Pannello Amministratori" outcome="adminPanel"></h:link></li>
@@ -15,6 +16,26 @@
 						value="Catalogo" />
 				</h:form></li>
 		</ul>
+=======
+		<h:form>
+			<h1>Navigazione sito</h1>
+			<div>
+				Login Amministratore
+				<h:panelGrid>
+					<h:outputLabel value="Username: " style="font-weight:bold" />
+					<h:inputText value="#{adminController.username}" />
+					<h:outputLabel value="Password: " style="font-weight:bold" />
+					<h:inputSecret value="#{adminController.password}" />
+					<h:commandButton action="#{adminController.authenticate}"
+						value="Conferma" />
+				</h:panelGrid>
+			</div>
+			<div>
+				<h:commandLink action="#{productController.retrieveAllProducts}"
+					value="Catalogo" />
+			</div>
+		</h:form>
+>>>>>>> refs/remotes/origin/master
 	</f:view>
 </body>
 </html>
