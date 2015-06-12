@@ -10,6 +10,8 @@ import javax.faces.bean.ManagedProperty;
 
 
 
+
+import exception.InvalidLoginException;
 import model.Customer;
 import model.CustomerFacade;
 import model.Orders;
@@ -24,6 +26,7 @@ public class CustomerController {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String password;
 	private String phoneNumber;
 	private String day;
 	private String month;
@@ -40,7 +43,7 @@ public class CustomerController {
 
 	public String createCustomer() {
 		try {
-			this.customer = customerFacade.createCustomer(firstName, lastName, email,
+			this.customer = customerFacade.createCustomer(firstName, lastName, email,password,
 					phoneNumber, street, zipcode, country, 
 					city, day, month, year);
 		}
@@ -48,6 +51,22 @@ public class CustomerController {
 			return "customerExc";
 		}
 		return "confirmedCustomer";
+	}
+
+	public String authenticate() {
+		try {
+			this.customer =  customerFacade.loginCheck(this.email, this.password);
+		} catch(InvalidLoginException e) {
+			return "errlog";
+		}
+		return "index";
+	}
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Long getId() {

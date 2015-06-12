@@ -29,6 +29,8 @@ public class Customer {
 	@Column(unique=true,nullable=false)
 	private String email;
 	@Column
+	private String password;
+	@Column
 	private String phoneNumber;
 	@Column
 	private Date dateOfBirth;
@@ -44,7 +46,7 @@ public class Customer {
 
 	}
 
-	public Customer(Long id, String firstName, String lastName, String email,
+	public Customer(Long id, String firstName, String lastName, String email,String password,
 			String phoneNumber, Date dateOfBirth ,Date registrationDate,
 			Address address, List<Orders> orders) {
 		super();
@@ -52,11 +54,20 @@ public class Customer {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.password=password;
 		this.phoneNumber = phoneNumber;
 		this.dateOfBirth = dateOfBirth;
 		this.registrationDate = registrationDate;
 		this.address = address;
 		this.orders = orders;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Long getId() {

@@ -5,9 +5,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
+import exception.InvalidLoginException;
 
 @Stateless
 public class CustomerFacade {
@@ -16,7 +20,7 @@ public class CustomerFacade {
 	private EntityManager em;
 
 
-	public Customer createCustomer(String firstName, String lastName, String email, String phoneNumber, 
+	public Customer createCustomer(String firstName, String lastName, String email, String password, String phoneNumber, 
 			String street,String zipcode, String country, String city, 
 			String day,String month,String year) {
 
@@ -24,6 +28,7 @@ public class CustomerFacade {
 		customer.setFirstName(firstName);
 		customer.setLastName(lastName);
 		customer.setEmail(email);
+		customer.setPassword(password);
 		customer.setPhoneNumber(phoneNumber);
 		Address address = new Address();
 		address.setCity(city);
@@ -38,6 +43,20 @@ public class CustomerFacade {
 		customer.setRegistrationDate(registrationDate);
 		em.persist(customer);
 		return customer;
+	}
+	public Customer loginCheck(String email, String password) throws InvalidLoginException {
+		TypedQuery<Customer> query = em.createNamedQuery("customer.retrieveCustomer", Customer.class);
+		query.setParameter("username", email);
+		Customer customer= new Customer();
+		try { 
+			customer= query.getSingleResult();
+		} catch (javax.persistence.NoResultException e) {
+			throw new InvalidLoginException();
+		}
+		if(password.equals(customer.getPassword()))
+			return customer;
+		else
+			throw new InvalidLoginException();
 	}
 
 	public Customer getCustomer(Long id) {
