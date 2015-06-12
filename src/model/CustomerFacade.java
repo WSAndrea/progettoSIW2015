@@ -46,10 +46,10 @@ public class CustomerFacade {
 	}
 	public Customer loginCheck(String email, String password) throws InvalidLoginException {
 		TypedQuery<Customer> query = em.createNamedQuery("customer.retrieveCustomer", Customer.class);
-		query.setParameter("username", email);
+		query.setParameter("email", email);
 		Customer customer= new Customer();
 		try { 
-			customer= query.getSingleResult();
+			customer = query.getSingleResult();
 		} catch (javax.persistence.NoResultException e) {
 			throw new InvalidLoginException();
 		}

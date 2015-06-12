@@ -92,6 +92,12 @@
 			</div>
 
 			<div>
+				password
+				<h:inputText value="#{customerController.password}" required="true"
+					requiredMessage="Parametro obbligatorio" />
+				<h:message for="password" />
+			</div>
+			<div>
 				<h:commandButton value="Conferma"
 					action="#{customerController.createCustomer}" />
 				<h:button value="Annulla" outcome="index" />

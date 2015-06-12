@@ -17,7 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@NamedQuery(name="retrieveAllCustomers", query = "SELECT c from Customer c")
+@NamedQuery(name="customer.retrieveCustomer", query = "SELECT c from Customer c where c.email = :email")
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
