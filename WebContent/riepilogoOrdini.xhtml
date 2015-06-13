@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+<title>Riepilogo ordini</title>
+</head>
+<body>
+	<f:view>
+		<h:form>
+			<ul>
+				<ui:repeat value="#{orderController.orders}" var="order">
+					<li><h:link value="#{order.creationTime}"
+							outcome="ricercaOrdine.xhtml?id=#{order.id}" /></li>
+				</ui:repeat>
+			</ul>
+			<h:link value="Torna alla pagina principale" outcome="index" />
+		</h:form>
+	</f:view>
+</body>
+</html>

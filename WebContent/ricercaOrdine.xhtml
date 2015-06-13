@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+<title>Dettagli ordine</title>
+</head>
+<body>
+	<f:view>
+		<h:form>
+			<h:outputText value="#{orderController.findProduct(param['id'])}" />
+			<div>data di creazione: ${orderController.order.creationTime}</div>
+			<div>Cliente: ${orderController.order.customer}</div>
+			<div> righe ordine: ${orderController.order.orderLines}</div>
+			<h:commandLink action="#{orderController.retrieveAllOrders}"
+				value="Torna al riepilogo ordini" />
+		</h:form>
+	</f:view>
+</body>
+</html>

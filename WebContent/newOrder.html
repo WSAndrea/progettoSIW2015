@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Nuovo Ordine</title>
+</head>
+<body>
+	<f:view>
+		<h:form>
+			<div>
+				data creazione:
+				<h:inputText value="#{orderController.creationTime}" required="true"
+					requiredMessage="Parametro obbligatorio" id="creationTime" />
+				<h:message for="creationTime" />
+			</div>
+			<div>
+				Customer:
+				<h:inputText value="#{orderController.customer}" required="true"
+					requiredMessage="Parametro obbligatorio" id="customer" />
+				<h:message for="customer" />
+			</div>
+			<div>
+				Righe ordine:
+				<h:inputText value="#{orderController.orderLines}" required="true"
+					requiredMessage="Parametro obbligatorio"
+					converterMessage="Il prezzo deve essere un numero" id="orderLines" />
+				<h:message for="orderLines" />
+			</div>
+		</h:form>
+	</f:view>
+</body>
+</html>
