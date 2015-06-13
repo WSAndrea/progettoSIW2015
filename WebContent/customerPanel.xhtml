@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Pannello cliente</title>
+</head>
+<body>
+	<f:view>
+		<h:form>
+			<div>
+				<h1>Benvenuto, ${customerController.customer.firstName}</h1>
+			</div>
+			<div>
+				<h:commandLink action="#{customerController.createOrder}"
+					value="Fai un ordine" />
+			</div>
+
+			<div>
+				<h:link value="Torna alla pagina iniziale" outcome="index" />
+			</div>
+		</h:form>
+	</f:view>
+</body>
+</html>

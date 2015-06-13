@@ -9,32 +9,15 @@
 		<h:form>
 			<h1>Navigazione sito</h1>
 			<div>
-				Login Amministratore
-				<h:panelGrid>
-					<h:outputLabel value="Username: " style="font-weight:bold" />
-					<h:inputText value="#{adminController.username}" />
-					<h:outputLabel value="Password: " style="font-weight:bold" />
-					<h:inputSecret value="#{adminController.password}" />
-					<h:commandButton action="#{adminController.authenticate}"
-						value="Conferma" />
-				</h:panelGrid>
+				<h:link value="Login Amministratore" outcome="adminlogin" />
 			</div>
 			<div>
-				Login Cliente
-				<h:panelGrid>
-					<h:outputLabel value="email: " style="font-weight:bold" />
-					<h:inputText value="#{customerController.email}" />
-					<h:outputLabel value="Password: " style="font-weight:bold" />
-					<h:inputSecret value="#{customerController.password}" />
-					<h:commandButton action="#{customerController.authenticate}"
-						value="Conferma" />
-				</h:panelGrid>
+				<h:link value="Login Cliente" outcome="customerlogin" />
 			</div>
 			<div>
 				<h:link value="Registrazione Cliente" outcome="newCustomer" />
 			</div>
 			<div>
-
 				<h:commandLink action="#{productController.retrieveAllProducts}"
 					value="Catalogo" />
 			</div>

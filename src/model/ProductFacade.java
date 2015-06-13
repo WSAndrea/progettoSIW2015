@@ -44,4 +44,16 @@ public class ProductFacade {
 			product.getProviders().add(provider);
 		em.merge(product);
 	}
+	
+	public void addOrderline(Long id, OrderLine orderline) {
+		Product product = em.find(Product.class, id);
+		if(product.getOrderLines()==null) {
+			List<OrderLine> orderlines = new LinkedList<OrderLine>();
+			orderlines.add(orderline);
+			product.setOrderLines(orderlines);
+		}
+		else 
+			product.getOrderLines().add(orderline);
+		em.merge(product);
+	}
 }

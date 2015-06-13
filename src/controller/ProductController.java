@@ -4,24 +4,24 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.EJBTransactionRolledbackException;
-
-
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-
+import javax.faces.bean.SessionScoped;
 
 import model.OrderLine;
+import model.OrdersFacade;
 import model.Product;
 import model.ProductFacade;
 import model.Provider;
 
 @ManagedBean
-
+@SessionScoped
 public class ProductController {
 
-	@ManagedProperty(value="#{param.id}")
+	//@ManagedProperty(value="#{param.id}")
 	private Long id;
+	//@ManagedProperty(value="#{param.oid}")
+	private String oid;
 	private String code;
 	private String name;
 	private String description;
@@ -31,9 +31,13 @@ public class ProductController {
 	private List<Provider> providers;
 	private Product product;
 	private List<Product> products;
+	private OrderLine orderline;
+	private Integer quantity;
 
 	@EJB
 	private ProductFacade productFacade;
+	@EJB
+	private OrdersFacade ordersFacade;
 
 	public String createProduct() {
 		try {
@@ -50,15 +54,22 @@ public class ProductController {
 		return "catalogo";
 	}
 
-	public String findProduct() {
-		this.product = productFacade.getProduct(this.id);
-		System.out.println("TEST PROVA TEST PROVA");
-		return "product";
-	}
-
 	public void findProduct(String id) {
 		this.id = Long.parseLong(id);
 		this.product = productFacade.getProduct(this.id);
+	}
+
+	public void confirmOrderline() {
+		this.orderline = new OrderLine();
+		this.orderline.setQuantity(this.quantity);
+		this.orderline.setUnitprice(this.product.getPrice());
+		productFacade.addOrderline(this.id, this.orderline);
+		Long orderid = Long.parseLong(oid);
+		ordersFacade.addOrderLines(orderid, orderline);
+	}
+
+	public String goBack() {
+		return "newOrder";
 	}
 
 	public Long getId() {
@@ -147,5 +158,29 @@ public class ProductController {
 
 	public void setProductFacade(ProductFacade productFacade) {
 		this.productFacade = productFacade;
+	}
+
+	public OrderLine getOrderline() {
+		return orderline;
+	}
+
+	public void setOrderline(OrderLine orderline) {
+		this.orderline = orderline;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getOid() {
+		return oid;
+	}
+
+	public void setOid(String oid) {
+		this.oid = oid;
 	}
 }

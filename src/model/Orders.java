@@ -28,9 +28,9 @@ public class Orders {
 	@Column
 	@Temporal(TemporalType.DATE)
 	private Date evasionTime;
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.MERGE})
 	private Customer customer;
-	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, fetch = FetchType.EAGER)
+	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "orders_id")
 	private List<OrderLine> orderLines;
 

@@ -30,7 +30,7 @@ public class Product {
 	private Float price;
 	@Column
 	private Integer stockquantity;
-	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.REFRESH,CascadeType.MERGE})
 	@JoinColumn(name = "product_code")
 	private List<OrderLine> orderLines;
 	@ManyToMany(mappedBy = "products", cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})

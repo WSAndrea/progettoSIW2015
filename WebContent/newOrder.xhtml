@@ -1,30 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
 <title>Nuovo Ordine</title>
 </head>
 <body>
 	<f:view>
 		<h:form>
+			<h:outputText value="#{productController.retrieveAllProducts()}" />
+			<ul>
+				<ui:repeat value="#{productController.products}" var="product">
+					<li><h:link value="#{product.name}"
+							outcome="productdetails.xhtml?id=#{product.id}&amp;oid=#{customerController.order.id}" /></li>
+				</ui:repeat>
+			</ul>
 			<div>
-				data creazione:
-				<h:inputText value="#{orderController.creationTime}" required="true"
-					requiredMessage="Parametro obbligatorio" id="creationTime" />
-				<h:message for="creationTime" />
-			</div>
-			<div>
-				Customer:
-				<h:inputText value="#{orderController.customer}" required="true"
-					requiredMessage="Parametro obbligatorio" id="customer" />
-				<h:message for="customer" />
-			</div>
-			<div>
-				Righe ordine:
-				<h:inputText value="#{orderController.orderLines}" required="true"
-					requiredMessage="Parametro obbligatorio"
-					converterMessage="Il prezzo deve essere un numero" id="orderLines" />
-				<h:message for="orderLines" />
+				<h:commandButton action="#{customerController.confirmOrder}"
+					value="Conferma l'ordine" />
+				<h:commandButton action="#{customerController.cancelOrder}"
+					value="Annulla l'ordine" />
 			</div>
 		</h:form>
 	</f:view>

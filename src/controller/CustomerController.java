@@ -5,23 +5,20 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.EJBTransactionRolledbackException;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-
-
-
-
+import javax.faces.bean.SessionScoped;
 
 import exception.InvalidLoginException;
 import model.Customer;
 import model.CustomerFacade;
 import model.Orders;
+import model.OrdersFacade;
 
 
 
 @ManagedBean
+@SessionScoped
 public class CustomerController {
 
-	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private String firstName;
 	private String lastName;
@@ -37,9 +34,12 @@ public class CustomerController {
 	private String city;
 	private Customer customer;
 	private List<Orders> orders;
+	private Orders order;
 
 	@EJB
 	private CustomerFacade customerFacade;
+	@EJB
+	private OrdersFacade ordersFacade;
 
 	public String createCustomer() {
 		try {
@@ -53,13 +53,29 @@ public class CustomerController {
 		return "confirmedCustomer";
 	}
 
+	public String createOrder() {
+		this.order = ordersFacade.createOrder(this.customer);
+		customerFacade.addOrder(this.customer.getId(), this.order);
+		return "newOrder";
+	}
+
+	public String confirmOrder() {
+		ordersFacade.confirmOrder(this.order);
+		return "confirmedOrder";
+	}
+
+	public String cancelOrder() {
+		ordersFacade.deleteOrder(this.order.getId());
+		return "customerPanel";
+	}
+
 	public String authenticate() {
 		try {
 			this.customer =  customerFacade.loginCheck(this.email, this.password);
 		} catch(InvalidLoginException e) {
 			return "errlog";
 		}
-		return "index";
+		return "customerPanel";
 	}
 	public String getPassword() {
 		return password;
@@ -189,5 +205,12 @@ public class CustomerController {
 		this.orders = orders;
 	}
 
+	public Orders getOrder() {
+		return order;
+	}
+
+	public void setOrder(Orders order) {
+		this.order = order;
+	}
 
 }

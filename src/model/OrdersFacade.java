@@ -16,10 +16,23 @@ public class OrdersFacade {
 	@PersistenceContext(unitName = "siw2015-unit")
 	private EntityManager em;
 
-	public Orders createOrder(Date creationTime,Customer customer,List<OrderLine> orderLines) throws EJBTransactionRolledbackException{
-		Orders order = new Orders(creationTime,customer, List<OrderLine> orderLines);
+	public Orders createOrder(Customer customer) throws EJBTransactionRolledbackException {
+		Orders order = new Orders();
+		List<OrderLine> orderlines = new LinkedList<OrderLine>();
+		order.setCustomer(customer);
+		order.setOrderLines(orderlines);
+		order.setCreationTime(new Date());
 		em.persist(order);
 		return order;
+	}
+	
+	public void confirmOrder(Orders order) {
+		em.merge(order);
+	}
+	
+	public void deleteOrder(Long id) {
+		Orders order = em.find(Orders.class, id);
+		em.remove(order);
 	}
 
 	public List<Orders> getAllOrders() {
