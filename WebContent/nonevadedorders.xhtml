@@ -5,31 +5,21 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
-<title>Ordini effettuati</title>
+<title>Ordini da evadere</title>
 </head>
 <body>
 	<f:view>
 		<h:form>
-			<div>Cliccare su un ordine per visualizzare le informazioni del
-				cliente.</div>
 			<h:outputText value="#{adminController.fetchAllNonEvadedOrders()}" />
 			<div>
 				<h1>Ordini non evasi</h1>
 			</div>
+			<div>Cliccare su un ordine per esaminarne i dettagli ed
+				evaderlo.</div>
 			<ul>
 				<ui:repeat value="#{adminController.orders}" var="order">
 					<li>Codice: <h:link value="#{order.id}"
-							outcome="customerinfo.xhtml?id=#{order.id}" /></li>
-				</ui:repeat>
-			</ul>
-			<h:outputText value="#{adminController.fetchAllEvadedOrders()}" />
-			<div>
-				<h1>Ordini evasi</h1>
-			</div>
-			<ul>
-				<ui:repeat value="#{adminController.orders}" var="order">
-					<li>Codice: <h:link value="#{order.id}"
-							outcome="customerinfo.xhtml?id=#{order.id}" /></li>
+							outcome="orderToEvade.xhtml?id=#{order.id}" /></li>
 				</ui:repeat>
 			</ul>
 			<h:link value="Torna al pannello" outcome="adminPanel" />

@@ -9,7 +9,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaQuery;
 
 @Stateless
 public class OrdersFacade {
@@ -43,10 +42,15 @@ public class OrdersFacade {
 		em.remove(order);
 	}
 
-	public List<Orders> getAllOrders() {
-		CriteriaQuery<Orders> query = em.getCriteriaBuilder().createQuery(Orders.class);
-		query.select(query.from(Orders.class));
-		List<Orders> orders = em.createQuery(query).getResultList();
+	public List<Orders> getAllNonEvadedOrders() {
+		TypedQuery<Orders> query = em.createQuery("SELECT o FROM Orders o WHERE o.evasionTime IS NULL", Orders.class);
+		List<Orders> orders = query.getResultList();
+		return orders;
+	}
+	
+	public List<Orders> getAllEvadedOrders() {
+		TypedQuery<Orders> query = em.createQuery("SELECT o FROM Orders o WHERE o.evasionTime IS NOT NULL", Orders.class);
+		List<Orders> orders = query.getResultList();
 		return orders;
 	}
 
@@ -65,6 +69,12 @@ public class OrdersFacade {
 		}
 		else 
 			order.getOrderLines().add(orderline);
+		em.merge(order);
+	}
+	
+	public void setEvasiontime(Long id) {
+		Orders order = em.find(Orders.class, id);
+		order.setEvasionTime(new Date());
 		em.merge(order);
 	}
 }

@@ -10,6 +10,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 
+import exception.InvalidQuantityException;
+
 @Stateless
 public class ProductFacade {
 
@@ -45,7 +47,7 @@ public class ProductFacade {
 			product.getProviders().add(provider);
 		em.merge(product);
 	}
-	
+
 	public void addOrderline(Long id, OrderLine orderline) {
 		Product product = em.find(Product.class, id);
 		if(product.getOrderLines()==null) {
@@ -57,12 +59,28 @@ public class ProductFacade {
 			product.getOrderLines().add(orderline);
 		em.merge(product);
 	}
-	
+
 	public Product findProductFromOrderline(Long id) {
 		TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p JOIN p.orderLines ol WHERE ol.id  = :orderlineid", Product.class);
 		query.setParameter("orderlineid", id);
 		Product product = query.getSingleResult();
 		return product;
 	}
-	
+
+	public void evadeOrder(Long id, List<OrderLine> orderlines) throws InvalidQuantityException {
+		for(OrderLine ol:orderlines) {
+			Product p = findProductFromOrderline(ol.getId());
+			if(p.getStockquantity()>=ol.getQuantity()) {
+				;
+			}
+			else
+				throw new InvalidQuantityException();
+		}
+		for(OrderLine ol:orderlines) {
+			Product p = findProductFromOrderline(ol.getId());
+			p.setStockquantity(p.getStockquantity()-ol.getQuantity());
+			em.merge(p);
+		}
+	}
+
 }

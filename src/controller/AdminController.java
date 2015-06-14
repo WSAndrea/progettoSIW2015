@@ -38,8 +38,12 @@ public class AdminController {
 		return "adminPanel";
 	}
 
-	public void fetchAllOrders() {
-		this.setOrders(orderFacade.getAllOrders());
+	public void fetchAllNonEvadedOrders() {
+		this.setOrders(orderFacade.getAllNonEvadedOrders());
+	}
+	
+	public void fetchAllEvadedOrders() {
+		this.setOrders(orderFacade.getAllEvadedOrders());
 	}
 	
 	public Long getId() {

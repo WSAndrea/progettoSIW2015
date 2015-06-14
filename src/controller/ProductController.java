@@ -7,7 +7,10 @@ import javax.ejb.EJBTransactionRolledbackException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import exception.InvalidQuantityException;
 import model.OrderLine;
+import model.OrderLineFacade;
+import model.Orders;
 import model.OrdersFacade;
 import model.Product;
 import model.ProductFacade;
@@ -30,11 +33,14 @@ public class ProductController {
 	private List<Product> products;
 	private OrderLine orderline;
 	private Integer quantity;
+	private Orders order;
 
 	@EJB
 	private ProductFacade productFacade;
 	@EJB
 	private OrdersFacade ordersFacade;
+	@EJB
+	private OrderLineFacade orderlineFacade;
 
 	public String createProduct() {
 		try {
@@ -73,6 +79,18 @@ public class ProductController {
 		Long lineid = this.orderline.getId();
 		ordersFacade.addOrderLines(oid, lineid);
 		return "confirmedOrderline";
+	}
+	
+	public String evadeOrder() {
+		this.setOrder(ordersFacade.getOrder(oid));
+		this.orderLines = orderlineFacade.retrieveOrderlines(oid);
+		try {
+			productFacade.evadeOrder(oid,this.orderLines);
+		} catch (InvalidQuantityException e) {
+			return "errorQuantity";
+		}
+		ordersFacade.setEvasiontime(oid);
+		return "evadedOrder";
 	}
 
 	public String goBack() {
@@ -189,5 +207,13 @@ public class ProductController {
 
 	public void setOid(Long oid) {
 		this.oid = oid;
+	}
+
+	public Orders getOrder() {
+		return order;
+	}
+
+	public void setOrder(Orders order) {
+		this.order = order;
 	}
 }
