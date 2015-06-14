@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name="orderline.retrieveOrdersOrderlines", query = "SELECT ol FROM OrderLine ol WHERE ol.orders.id = :orderid")
 public class OrderLine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -5,7 +5,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.EJBTransactionRolledbackException;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import model.OrderLine;
@@ -18,9 +17,7 @@ import model.Provider;
 @SessionScoped
 public class ProductController {
 
-	//@ManagedProperty(value="#{param.id}")
 	private Long id;
-	//@ManagedProperty(value="#{param.oid}")
 	private Long oid;
 	private String code;
 	private String name;
@@ -57,6 +54,11 @@ public class ProductController {
 	public void findProduct(String id) {
 		this.id = Long.parseLong(id);
 		this.product = productFacade.getProduct(this.id);
+	}
+	
+	public void findProductFromOrderline(String id) {
+		Long olid = Long.parseLong(id);
+		this.product = productFacade.findProductFromOrderline(olid);
 	}
 	
 	public void findOid(String oid) {

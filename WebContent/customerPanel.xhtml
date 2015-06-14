@@ -8,13 +8,16 @@
 	<f:view>
 		<h:form>
 			<div>
-				<h1>Benvenuto, ${customerController.customer.firstName}</h1>
+				<h1>Ciao, ${customerController.customer.firstName}!</h1>
 			</div>
 			<div>
 				<h:commandLink action="#{customerController.createOrder}"
 					value="Fai un ordine" />
 			</div>
-
+			<div>
+				<h:commandLink action="#{customerController.retrieveAllOrders}"
+					value="Controlla i tuoi ordini" />
+			</div>
 			<div>
 				<h:link value="Torna alla pagina iniziale" outcome="index" />
 			</div>

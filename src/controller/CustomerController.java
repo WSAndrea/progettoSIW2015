@@ -10,6 +10,8 @@ import javax.faces.bean.SessionScoped;
 import exception.InvalidLoginException;
 import model.Customer;
 import model.CustomerFacade;
+import model.OrderLine;
+import model.OrderLineFacade;
 import model.Orders;
 import model.OrdersFacade;
 
@@ -34,12 +36,15 @@ public class CustomerController {
 	private String city;
 	private Customer customer;
 	private List<Orders> orders;
+	private List<OrderLine> orderlines;
 	private Orders order;
 
 	@EJB
 	private CustomerFacade customerFacade;
 	@EJB
 	private OrdersFacade ordersFacade;
+	@EJB
+	private OrderLineFacade orderlineFacade;
 
 	public String createCustomer() {
 		try {
@@ -77,6 +82,17 @@ public class CustomerController {
 		}
 		return "customerPanel";
 	}
+	
+	public String retrieveAllOrders() {
+		this.orders = ordersFacade.retrieveCustomerOrders(this.customer.getId());
+		return "orderList";
+	}
+	
+	public void retrieveOrderlines(String id) {
+		Long oid = Long.parseLong(id);
+		this.orderlines = orderlineFacade.retrieveOrderlines(oid);
+	}
+	
 	public String getPassword() {
 		return password;
 	}
@@ -211,6 +227,14 @@ public class CustomerController {
 
 	public void setOrder(Orders order) {
 		this.order = order;
+	}
+
+	public List<OrderLine> getOrderlines() {
+		return orderlines;
+	}
+
+	public void setOrderlines(List<OrderLine> orderlines) {
+		this.orderlines = orderlines;
 	}
 
 }

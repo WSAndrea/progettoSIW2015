@@ -7,6 +7,7 @@ import javax.ejb.EJBTransactionRolledbackException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 
 @Stateless
@@ -56,4 +57,12 @@ public class ProductFacade {
 			product.getOrderLines().add(orderline);
 		em.merge(product);
 	}
+	
+	public Product findProductFromOrderline(Long id) {
+		TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p JOIN p.orderLines ol WHERE ol.id  = :orderlineid", Product.class);
+		query.setParameter("orderlineid", id);
+		Product product = query.getSingleResult();
+		return product;
+	}
+	
 }

@@ -8,6 +8,7 @@ import javax.ejb.EJBTransactionRolledbackException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 
 @Stateless
@@ -24,6 +25,13 @@ public class OrdersFacade {
 		order.setCreationTime(new Date());
 		em.persist(order);
 		return order;
+	}
+	
+	public List<Orders> retrieveCustomerOrders(Long customerid) {
+		TypedQuery<Orders> query = em.createNamedQuery("orders.retrieveCustomerOrders", Orders.class);
+		query.setParameter("customerid", customerid);
+		List<Orders> orders = query.getResultList();
+		return orders;
 	}
 	
 	public void confirmOrder(Orders order) {
