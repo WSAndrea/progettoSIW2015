@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+<title>Prodotto ordinato</title>
+</head>
+<body>
+	<f:view>
+		<h:form>
+			<div>Prodotto inserito nell'ordine.</div>
+			<div>
+				<h:link value="Clicca qui per confermare l'ordine"
+					outcome="confirmedOrder" />
+			</div>
+			<div>
+				<h:link value="Clicca qui per continuare gli acquisti"
+					outcome="newOrder" />
+			</div>
+		</h:form>
+	</f:view>
+</body>
+</html>

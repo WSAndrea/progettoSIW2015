@@ -11,6 +11,7 @@
 	<f:view>
 		<h:form>
 			<h:outputText value="#{productController.findProduct(param['id'])}" />
+			<h:outputText value="#{productController.findOid(param['oid'])}" />
 			<div>Nome: ${productController.product.name}</div>
 			<div>Codice prodotto: ${productController.product.code}</div>
 			<div>Prezzo: ${productController.product.price}€</div>
@@ -24,9 +25,7 @@
 					converterMessage="La quantità deve essere un numero" id="quantity" />
 				<h:message for="quantity" />
 			</div>
-			<h:outputText value="#{productController.setOid(param['oid'])}" />
-			<h:commandButton
-				action="#{productController.confirmOrderline}"
+			<h:commandButton action="#{productController.confirmOrderline}"
 				value="Aggiungi all'ordine" />
 			<h:commandButton action="#{productController.goBack}"
 				value="Torna indietro" />

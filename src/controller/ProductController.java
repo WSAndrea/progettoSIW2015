@@ -21,7 +21,7 @@ public class ProductController {
 	//@ManagedProperty(value="#{param.id}")
 	private Long id;
 	//@ManagedProperty(value="#{param.oid}")
-	private String oid;
+	private Long oid;
 	private String code;
 	private String name;
 	private String description;
@@ -58,14 +58,19 @@ public class ProductController {
 		this.id = Long.parseLong(id);
 		this.product = productFacade.getProduct(this.id);
 	}
+	
+	public void findOid(String oid) {
+		this.oid = Long.parseLong(oid);
+	}
 
-	public void confirmOrderline() {
+	public String confirmOrderline() {
 		this.orderline = new OrderLine();
 		this.orderline.setQuantity(this.quantity);
 		this.orderline.setUnitprice(this.product.getPrice());
 		productFacade.addOrderline(this.id, this.orderline);
-		Long orderid = Long.parseLong(oid);
-		ordersFacade.addOrderLines(orderid, orderline);
+		Long lineid = this.orderline.getId();
+		ordersFacade.addOrderLines(oid, lineid);
+		return "confirmedOrderline";
 	}
 
 	public String goBack() {
@@ -176,11 +181,11 @@ public class ProductController {
 		this.quantity = quantity;
 	}
 
-	public String getOid() {
+	public Long getOid() {
 		return oid;
 	}
 
-	public void setOid(String oid) {
+	public void setOid(Long oid) {
 		this.oid = oid;
 	}
 }

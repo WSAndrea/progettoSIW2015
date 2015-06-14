@@ -47,15 +47,16 @@ public class OrdersFacade {
 		return order;
 	}
 
-	public void addOrderLines(Long id, OrderLine orderLine) {
+	public void addOrderLines(Long id, Long lineid) {
 		Orders order = em.find(Orders.class, id);
+		OrderLine orderline = em.find(OrderLine.class, lineid);
 		if(order.getOrderLines()==null) {
 			List<OrderLine> orderLines = new LinkedList<OrderLine>();
-			orderLines.add(orderLine);
+			orderLines.add(orderline);
 			order.setOrderLines(orderLines);
 		}
 		else 
-			order.getOrderLines().add(orderLine);
+			order.getOrderLines().add(orderline);
 		em.merge(order);
 	}
 }
