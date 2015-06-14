@@ -9,6 +9,8 @@ import javax.faces.bean.SessionScoped;
 import exception.InvalidLoginException;
 import model.Admin;
 import model.AdminFacade;
+import model.Orders;
+import model.OrdersFacade;
 
 @ManagedBean
 @SessionScoped
@@ -20,9 +22,12 @@ public class AdminController {
 	private String username;
 	private String password;
 	private List<Admin> adminlist;
+	private List<Orders> orders;
 
 	@EJB
 	private AdminFacade adminFacade;
+	@EJB
+	private OrdersFacade orderFacade;
 
 	public String authenticate() {
 		try {
@@ -33,6 +38,10 @@ public class AdminController {
 		return "adminPanel";
 	}
 
+	public void fetchAllOrders() {
+		this.setOrders(orderFacade.getAllOrders());
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -87,5 +96,13 @@ public class AdminController {
 
 	public void setAdminFacade(AdminFacade adminFacade) {
 		this.adminFacade = adminFacade;
+	}
+
+	public List<Orders> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Orders> orders) {
+		this.orders = orders;
 	}
 }

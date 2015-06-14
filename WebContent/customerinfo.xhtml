@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+<title>Informazioni cliente</title>
+</head>
+<body>
+	<f:view>
+		<h:form>
+			<div>
+				<h:outputText
+					value="#{customerController.findCustomer(param['id'])}" />
+				<div>Nome: ${customerController.customer.firstName}</div>
+				<div>Cognome: ${customerController.customer.lastName}</div>
+				<div>email: ${customerController.customer.email}</div>
+				<div>Telefono: ${customerController.customer.phoneNumber}</div>
+				<div>
+					<h:outputText
+						value="Indirizzo: #{customerController.customer.getAddress().toString()}" />
+				</div>
+			</div>
+			<div>
+				<h:link value="Torna al pannello" outcome="adminPanel" />
+			</div>
+		</h:form>
+	</f:view>
+</body>
+</html>

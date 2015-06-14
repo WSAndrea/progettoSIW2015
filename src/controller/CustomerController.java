@@ -34,6 +34,7 @@ public class CustomerController {
 	private String zipcode;
 	private String country;
 	private String city;
+	private String address;
 	private Customer customer;
 	private List<Orders> orders;
 	private List<OrderLine> orderlines;
@@ -56,6 +57,11 @@ public class CustomerController {
 			return "customerExc";
 		}
 		return "confirmedCustomer";
+	}
+	
+	public void findCustomer(String id) {
+		Long oid = Long.parseLong(id);
+		this.customer = customerFacade.getCustomerFromOrder(oid);
 	}
 
 	public String createOrder() {
@@ -235,6 +241,14 @@ public class CustomerController {
 
 	public void setOrderlines(List<OrderLine> orderlines) {
 		this.orderlines = orderlines;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 }

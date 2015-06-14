@@ -58,6 +58,13 @@ public class CustomerFacade {
 		else
 			throw new InvalidLoginException();
 	}
+	
+	public Customer getCustomerFromOrder(Long id) {
+		TypedQuery<Customer> query = em.createQuery("SELECT c FROM Customer c JOIN c.orders o WHERE o.id = :oid", Customer.class);
+		query.setParameter("oid", id);
+		Customer customer = query.getSingleResult();
+		return customer;
+	}
 
 	public Customer getCustomer(Long id) {
 		Customer customer = em.find(Customer.class, id);
