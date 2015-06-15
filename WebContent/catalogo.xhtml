@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
 <title>Catalogo</title>
 </head>
 <body>
 	<f:view>
 		<h:form>
+			<h1>Catalogo prodotti</h1>
 			<ul>
 				<ui:repeat value="#{productController.products}" var="product">
 					<li><h:link value="#{product.name}"

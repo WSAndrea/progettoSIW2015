@@ -1,21 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <head>
 <title>Errore: utente non registrato</title>
 </head>
 <body>
-	<h:form>
-		<div>
+	<f:view>
+		<h:form>
+			<div>
 
-			<h1>Attenzione: non è stato possibile inserire il cliente nel
-				database.</h1>
-			<h:link
-				value="Clicca qui per tornare alla schermata di registrazione"
-				outcome="newCustomer" />
-		</div>
-	</h:form>
+				<h1>Attenzione: non è stato possibile inserire il cliente nel
+					database.</h1>
+				<h:link
+					value="Clicca qui per tornare alla schermata di registrazione"
+					outcome="newCustomer" />
+			</div>
+		</h:form>
+	</f:view>
 </body>
 </html>

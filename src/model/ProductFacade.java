@@ -82,5 +82,12 @@ public class ProductFacade {
 			em.merge(p);
 		}
 	}
+	
+	public List<Product> findProductsByProvider(Long id) {
+		TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p JOIN p.providers pr WHERE pr.id = :id", Product.class);
+		query.setParameter("id", id);
+		List<Product> products = query.getResultList();
+		return products;
+	}
 
 }

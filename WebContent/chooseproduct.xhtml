@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<title>Selezione prodotto</title>
+</head>
+<body>
+	<f:view>
+		<h:form>
+			<h1>Catalogo prodotti</h1>
+			<div>Clicca sul prodotto da assegnare</div>
+			<h:outputText value="#{providerController.retrieveAllProducts()}" />
+			<h:outputText value="#{providerController.findProvider(param['id'])}" />
+			<ul>
+				<ui:repeat value="#{providerController.products}" var="product">
+					<li><h:commandLink value="#{product.name} - #{product.id}"
+							action="#{providerController.assignProduct(product.id)}" /></li>
+				</ui:repeat>
+			</ul>
+			<h:link value="Torna al pannello amministratore" outcome="adminPanel" />
+		</h:form>
+	</f:view>
+</body>
+</html>

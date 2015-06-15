@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en" xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 <head>
@@ -6,16 +6,22 @@
 </head>
 <body>
 	<f:view>
-		<h1>Comandi</h1>
-		<ul>
-			<li><h:link value="Inserimento prodotto nel catalogo"
-					outcome="newProduct"></h:link></li>
-			<li><h:link value="Lista degli ordini effettuati"
-					outcome="allorders" /></li>
-			<li><h:link value="Evasione ordine"
-					outcome="nonevadedorders"></h:link></li>		
-			<li><h:link value="Esci dal pannello" outcome="index"></h:link></li>
-		</ul>
+		<h:form>
+			<h1>Comandi</h1>
+			<ul>
+				<li><h:link value="Inserimento prodotto nel catalogo"
+						outcome="newProduct"></h:link></li>
+				<li><h:link
+						value="Inserimento fornitore nell'elenco dei fornitori"
+						outcome="newProvider" /></li>
+				<li><h:link value="Registrazione prodotto a fornitore"
+						outcome="providers" /></li>
+				<li><h:link value="Lista degli ordini effettuati"
+						outcome="allorders" /></li>
+				<li><h:link value="Evasione ordine" outcome="nonevadedorders"></h:link></li>
+				<li><h:link value="Esci dal pannello" outcome="index"></h:link></li>
+			</ul>
+		</h:form>
 	</f:view>
 </body>
 </html>

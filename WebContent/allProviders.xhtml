@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<title>Elenco fornitori</title>
+</head>
+<body>
+	<f:view>
+		<h:form>
+			<div>Cliccare su un fornitore per visualizzarne le informazioni
+				e i suoi prodotti.</div>
+			<h:outputText value="#{providerController.retrieveAllProviders()}" />
+			<div>
+				<h1>Elenco Fornitori</h1>
+			</div>
+			<ul>
+				<ui:repeat value="#{providerController.providers}" var="provider">
+					<li><h:link value="#{provider.name}"
+							outcome="providerdetails.xhtml?id=#{provider.id}" /></li>
+				</ui:repeat>
+			</ul>
+			<h:link value="Torna alla pagina principale" outcome="index" />
+		</h:form>
+	</f:view>
+</body>
+</html>

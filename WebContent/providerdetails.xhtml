@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<title>Dettagli fornitore</title>
+</head>
+<body>
+	<f:view>
+		<h:form>
+			<div>
+				<h1>Dati fornitore</h1>
+			</div>
+			<div>
+				<h:outputText
+					value="#{providerController.findProvider(param['id'])}" />
+				<div>Nome: ${providerController.provider.name}</div>
+				<div>email: ${providerController.provider.email}</div>
+				<div>Telefono: ${providerController.provider.phoneNumber}</div>
+				<div>Vatin: ${providerController.provider.vatin}</div>
+				<div>
+					<h:outputText
+						value="Indirizzo: #{providerController.provider.getAddress().toString()}" />
+				</div>
+				<h1>Prodotti forniti</h1>
+				<h:outputText
+					value="#{providerController.findProductsByProvider(param['id'])}" />
+				<ul>
+					<ui:repeat var="product" value="#{providerController.products}">
+						<li>${product.name}, Codice: ${product.id}</li>
+					</ui:repeat>
+				</ul>
+			</div>
+			<h:link value="Torna all'elenco fornitori" outcome="allProviders" />
+		</h:form>
+	</f:view>
+</body>
+</html>
