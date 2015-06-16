@@ -6,6 +6,8 @@ import java.util.List;
 
 
 
+
+import javax.ejb.EJBTransactionRolledbackException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,7 +24,7 @@ public class CustomerFacade {
 
 	public Customer createCustomer(String firstName, String lastName, String email, String password, String phoneNumber, 
 			String street,String zipcode, String country, String city, 
-			String day,String month,String year) {
+			String day,String month,String year) throws EJBTransactionRolledbackException {
 
 		Customer customer = new Customer();
 		customer.setFirstName(firstName);
@@ -44,6 +46,7 @@ public class CustomerFacade {
 		em.persist(customer);
 		return customer;
 	}
+
 	public Customer loginCheck(String email, String password) throws InvalidLoginException {
 		TypedQuery<Customer> query = em.createNamedQuery("customer.retrieveCustomer", Customer.class);
 		query.setParameter("email", email);
@@ -58,7 +61,7 @@ public class CustomerFacade {
 		else
 			throw new InvalidLoginException();
 	}
-	
+
 	public Customer getCustomerFromOrder(Long id) {
 		TypedQuery<Customer> query = em.createQuery("SELECT c FROM Customer c JOIN c.orders o WHERE o.id = :oid", Customer.class);
 		query.setParameter("oid", id);

@@ -28,9 +28,9 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="active"><h:commandLink action="#{productController.retrieveAllProducts}"
 					value="Catalogo" /></li>
-			 <li class="active">><h:commandLink action="allProviders"
-					value="Fornitori" /></li>	
-     
+     <li class="active">
+				<h:link value="Elenco fornitori" outcome="allProviders" /></li>
+    
     </ul>
     <p class="navbar-text navbar-right"></p>
   </div>
@@ -38,9 +38,10 @@
 </nav>
 			<div class="container">
   <div class="row">
-    <div class="col-md-4"><h1></h1><h:link value="Login Amministratore" outcome="adminlogin" /><img width="100" src="amministratore.jpg" class="img-responsive"></img></div>
-    <div class="col-md-4"> <h1></h1><h:link value="Login Cliente" outcome="customerlogin" /><img width="100" src="cliente.jpg" class="img-responsive"></img></div>
-    <div class="col-md-4"><h1></h1><h:link value="Registrazione Cliente" outcome="newCustomer" /><img width="100" src="registrazione.jpg" class="img-responsive"></img></div>
+    <div class="col-md-4"><h1></h1><img width="100" src="amministratore.jpg" class="img-responsive"></img><h:link value="Login Amministratore" outcome="adminlogin" /></div>
+    <div class="col-md-4"> <h1></h1><img width="100" src="cliente.jpg" class="img-responsive"></img><h:link value="Login Cliente" outcome="customerlogin" /></div>
+    <div class="col-md-4"><h1></h1><img width="100" src="registrazione.jpg" class="img-responsive"></img><h:link value="Registrazione Cliente" outcome="newCustomer" /></div>
+    
   </div>
 </div>
 			

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en" xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 <head>
@@ -16,15 +16,25 @@
 					<img width="50" src="catalogo.jpg" class="img-responsive"></img><h:link value="Inserimento prodotto nel catalogo"
 					outcome="newProduct"></h:link>
 			</div>
-    <div class="col-md-4"> <h1></h1><img width="50" src="lista.jpg" class="img-responsive"></img><h:link value="Lista degli ordini effettuati"
-					outcome="allorders" />
+    <div class="col-md-4"> <h1></h1><img width="50" src="fornitore.jpg" class="img-responsive"></img><h:link value="Inserimento fornitore nell'elenco dei fornitori"
+					outcome="newProvider" />
 			</div>
-    <div class="col-md-4"><h1></h1><img width="50" src="freccia.jpg" class="img-responsive"></img><h:link value="Esci dal pannello" outcome="index"></h:link>
+    <div class="col-md-4"><h1></h1><img width="50" src="prodotto.jpg" class="img-responsive"></img><h:link value="Registrazione prodotto a fornitore" outcome="providers"></h:link>
 			</div>
 	 </div>
+	 
+	 <div class="row">
+    <div class="col-md-4"><h1></h1><img width="50" src="lista.jpg" class="img-responsive"></img><h:link value="Lista degli ordini effettuati"
+						outcome="allorders" /></div>
+    <div class="col-md-8"> <h1></h1><img width="50" src="evasione.jpg" class="img-responsive"></img><h:link value="Evasione ordine" outcome="nonevadedorders"></h:link></div>
+  </div>
+  <div class="col-md-8"> <h1></h1><img width="50" src="freccia.jpg" class="img-responsive"></img><h:link value="Esci dal pannello" outcome="index"></h:link>
+  </div>
 </div>		
 				
 		</h:form>	
+
+		
 	</f:view>
 		<script src="//code.jquery.com/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>

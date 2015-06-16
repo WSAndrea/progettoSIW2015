@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<title>Inserimento dati fornitore</title>
+</head>
+<body>
+	<f:view>
+		<h:form>
+			<div>
+				nome:
+				<h:inputText value="#{providerController.name}" required="true"
+					requiredMessage="Parametro obbligatorio" id="firstName" />
+				<h:message for="firstName" />
+			</div>
+			<div>
+				email:
+				<h:inputText value="#{providerController.email}" required="true"
+					requiredMessage="Parametro obbligatorio" id="email" />
+				<h:message for="email" />
+			</div>
+			<div>
+				numero di telefono:
+				<h:inputText value="#{providerController.phonenumber}"
+					required="true" requiredMessage="Parametro obbligatorio"
+					id="phonenumber" />
+				<h:message for="phonenumber" />
+
+			</div>
+			<div>
+				vatin:
+				<h:inputText value="#{providerController.vatin}" required="true"
+					requiredMessage="Parametro obbligatorio" id="vatin" />
+				<h:message for="vatin" />
+			</div>
+			<div>
+				città:
+				<h:inputText value="#{providerController.city}" required="true"
+					requiredMessage="Parametro obbligatorio" id="city" />
+				<h:message for="city" />
+
+			</div>
+			<div>
+				via:
+				<h:inputText value="#{providerController.street}" required="true"
+					requiredMessage="Parametro obbligatorio" id="street" />
+				<h:message for="street" />
+
+			</div>
+			<div>
+				zipcode:
+				<h:inputText value="#{providerController.zipcode}" required="true"
+					requiredMessage="Parametro obbligatorio" id="zipcode" />
+				<h:message for="zipcode" />
+
+			</div>
+			<div>
+				Stato:
+				<h:inputText value="#{providerController.country}" required="true"
+					requiredMessage="Parametro obbligatorio" id="country" />
+				<h:message for="country" />
+
+			</div>
+			<div>
+				<h:commandButton value="Conferma"
+					action="#{providerController.createProvider}" />
+				<h:button value="Annulla" outcome="adminPanel" />
+			</div>
+		</h:form>
+	</f:view>
+</body>
+</html>

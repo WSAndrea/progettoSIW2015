@@ -39,7 +39,7 @@ public class Customer {
 	private Date registrationDate;
 	@OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
 	private Address address;
-	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},mappedBy = "customer",fetch = FetchType.LAZY)
+	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},mappedBy = "customer",fetch = FetchType.EAGER)
 	private List<Orders> orders;
 
 	public Customer() {

@@ -4,16 +4,21 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
-<title>Catalogo</title>
+<title>Elenco fornitori</title>
 </head>
 <body>
 	<f:view>
 		<h:form>
-			<h1>Catalogo prodotti</h1>
+			<div>Cliccare su un fornitore per visualizzarne le informazioni
+				e i suoi prodotti.</div>
+			<h:outputText value="#{providerController.retrieveAllProviders()}" />
+			<div>
+				<h1>Elenco Fornitori</h1>
+			</div>
 			<ul>
-				<ui:repeat value="#{productController.products}" var="product">
-					<li><h:link value="#{product.name}"
-							outcome="ricerca.xhtml?id=#{product.id}" /></li>
+				<ui:repeat value="#{providerController.providers}" var="provider">
+					<li><h:link value="#{provider.name}"
+							outcome="providerdetails.xhtml?id=#{provider.id}" /></li>
 				</ui:repeat>
 			</ul>
 			<img width="50" src="freccia.jpg" class="img-responsive"></img><h:link value="Torna alla pagina principale" outcome="index" />
