@@ -22,10 +22,9 @@
 			</ul>
 			<div>
 				<h:outputText value="#{productController.findOid(param['id'])}" />
-				<h:commandButton
-					action="#{productController.evadeOrder}"
+				<h:commandButton action="#{productController.evadeOrder}"
 					value="Clicca per evadere l'ordine" />
-				<<h:button value="Torna indietro" outcome="nonevadedorders" />
+				<h:button value="Torna indietro" outcome="nonevadedorders" />
 			</div>
 		</h:form>
 	</f:view>

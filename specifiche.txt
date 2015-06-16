@@ -1,0 +1,118 @@
+SPECIFICHE - PROGETTO AVANZATO - SIW 2015
+
+CASO D'USO 1 - Consultazione Catalogo
+SCENARIO PRINCIPALE DI SUCCESSO:
+1) Un utente occasionale del negozio vuole consultare l'elenco dei prodotti.
+2) L'utente si collega al sito e seleziona il bottone "Catalogo". Il sistema mostra l'elenco di tutti i prodotti in vendita;
+3) L'utente seleziona il nome di un prodotto di cui vuole visualizzare i dettagli.
+	Il sistema mostra i dettagli del prodotto selezionato, quali nome, codice, prezzo unitario, descrizione
+	e quantità in magazzino;
+4) L'utente torna al catalogo selezionando il collegamento "Torna al catalogo". Il sistema mostra nuovamente l'elenco
+	dei prodotti;
+5) L'utente ripete i passi 3-4 finché non ha finito;
+6) L'utente esce dal catalogo selezionando il collegamento "Torna alla pagina principale".
+
+CASO D'USO 2 - Creazione di un ordine
+SCENARIO PRINCIPALE DI SUCCESSO:
+1) Un cliente registrato del negozio vuole effettuare un ordine.
+2) Il cliente seleziona il bottone "Login cliente" e immette le sue credenziali (email e password). Il sistema
+	autentica il cliente e mostra l'elenco dei comandi disponibili;
+3) Il cliente seleziona il bottone "Fai un ordine". Il sistema mostra il catalogo dei prodotti;
+4) Il cliente sceglie il nome di un prodotto. Il sistema mostra tutti i dettagli del prodotto scelto;
+5) Il cliente immette la quantità desiderata e conferma la scelta; il sistema registra le informazioni in una
+	riga dell'ordine;
+6) Il cliente seleziona il collegamento per tornare al catalogo dei prodotti. Il sistema mostra il catalogo;
+7) Il cliente ripete i passi 4-6 finché non ha finito;
+8) Il cliente preme sul collegamento per concludere l'ordine. Il sistema registra l'ordine.
+ECCEZIONI
+Il cliente, in qualsiasi momento di creazione dell'ordine, decide di annullarlo, premendo il bottone "Annulla". Il sistema
+annulla l'operazione
+
+CASO D'USO 3 - Consultazione ordini
+SCENARIO PRINCIPALE DI SUCCESSO:
+1) Un cliente registrato del negozio vuole visualizzare i propri ordini.
+2) Il cliente seleziona il bottone "Login cliente" e immette le sue credenziali (email e password). Il sistema
+	autentica il cliente e mostra l'elenco dei comandi disponibili;
+3) Il cliente seleziona il bottone "Controlla i tuo ordini". Il sistema mostra gli ordini effettuati dal cliente;
+4) Il cliente seleziona il codice di un ordine. Il sistema mostra i dettagli dell'ordine, quale l'elenco di prodotti
+	ordinati e la loro quantità;
+5) Il cliente ripete i passi 3-4 finché non ha finito.
+
+CASO D'USO 4 - Inserimento prodotti nel catalogo 
+SCENARIO PRINCIPALE DI SUCCESSO:
+1) L'amministratore del negozio vuole inserire un prodotto nel catalogo.
+2) L'amministratore seleziona il bottone "Login amministratore" e immette le sue credenziali (username e password).
+	Il sistema autentica l'amministratore e mostra il pannello dei comandi;
+3) L'amministratore seleziona il collegamento "Inserisci prodotto nel catalogo". Il sistema mostra una maschera di inserimento
+	con i campi necessari (nome, codice prodotto, descrizione, prezzo, quantità in magazzino);
+4) L'amministratore compila i campi e conferma l'inserimento. Il sistema registra le informazioni del prodotto;
+5) L'amministratore ripete i passi 3-4 finché non ha terminato;
+ECCEZIONI
+L'amministratore inserisce il codice di un prodotto che è già presente nella base dei dati. Il sistema interrompe l'inserimento
+del prodotto.
+
+CASO D'USO 5 - Recupero dettagli cliente
+SCENARIO PRINCIPALE DI SUCCESSO:
+1) L'amministratore del negozio vuole visualizzare i dettagli dei clienti che hanno effettuato un ordine.
+2) L'amministratore seleziona il bottone "Login amministratore" e immette le sue credenziali (username e password).
+	Il sistema autentica l'amministratore e mostra il pannello dei comandi;
+3) L'amministratore seleziona il collegamento "Lista degli ordini effettuati". Il sistema mostra l'elenco degli ordini effettuati,
+	separandoli in evasi e non evasi;
+4) L'amministratore seleziona il codice di un ordine. Il sistema mostra tutti i dettagli del cliente che ha effettuato tale
+	ordine;
+5) L'amministratore ripete i passi 3-4 finché non indica che ha terminato.
+
+CASO D'USO 6 - Evasione ordine
+SCENARIO PRINCIPALE DI SUCCESSO:
+1) L'amministratore del negozio vuole evadere un ordine.
+2) L'amministratore seleziona il bottone "Login amministratore" e immette le sue credenziali (username e password).
+	Il sistema autentica l'amministratore e mostra il pannello dei comandi;
+3) L'amministratore seleziona il collegamento "Evadi un ordine". Il sistema mostra un elenco contenente tutti gli ordini non evasi;
+4) L'amministratore seleziona il codice di un ordine. Il sistema mostra tutti i dettagli dell'ordine selezionato;
+5) L'amministrazione conferma l'evasione; il sistema detrae la quantità di prodotti ordinati dalle quantità in magazzino e evade l'ordine.
+	Da questo momento, l'ordine sarà visualizzato nella sezione degli ordini evasi;
+6) L'amministratore ripete i passi 4-5 finché non ha finito. Al termine, il sistema torna al pannello dei comandi.
+ECCEZIONI
+L'amministratore tenta di evadere un ordine, ma non ci sono abbastanza prodotti in magazzino. Il sistema annulla l'evasione dell'ordine.
+
+CASO D'USO 7 - Inserimento fornitori
+SCENARIO PRINCIPALE DI SUCCESSO:
+1) L'amministratore del negozio vuole registrare le informazioni di un nuovo fornitore.
+2) L'amministratore seleziona il bottone "Login amministratore" e immette le sue credenziali (username e password).
+	Il sistema autentica l'amministratore e mostra il pannello dei comandi;
+3) L'amministratore selezione il collegamento "Inserisci fornitore". Il sistema mostra una maschera di inserimento dei dettagli 
+	del fornitore;
+4) L'amministratore inserisce tutti i dati del fornitore e conferma l'inserimento. Il sistema registra il nuovo fornitore;
+5) L'amministratore ripete i passi precedenti finché non indica che ha terminato. Il sistema, al termine, mostra nuovamente il pannello
+	comandi.
+ECCEZIONI
+L'amministratore inserisce un fornitore il quale nome è già presente nella base di dati. Il sistema annulla l'inserimento.
+
+CASO D'USO 8 - Assegnazione fornitore a prodotto
+SCENARIO PRINCIPALE DI SUCCESSO:
+1) L'amministratore del negozio vuole assegnare i prodotti ad un fornitore.
+2) L'amministratore seleziona il bottone "Login amministratore" e immette le sue credenziali (username e password).
+	Il sistema autentica l'amministratore e mostra il pannello dei comandi;
+3) L'amministratore seleziona il collegamento "Registrazione prodotto a fornitore". Il sistema mostra l'elenco attuale dei fornitori;
+4) L'amministratore seleziona il nome del fornitore desiderato. Il sistema visualizza l'elenco dei prodotti attualmente nel catalogo;
+5) L'amministratore seleziona il prodotto da assegnare al fornitore. Il sistema registra la nuova relazione. Da questo momento,
+	il prodotto apparirà nei dettagli del fornitore;
+6) L'amministratore ripete i passi 3-5 finché non indica che ha finito. Al termine, il sistema mostra il pannello dei comandi.
+
+CASO D'USO 9 - Visualizzazione elenco fornitori
+SCENARIO PRINCIPALE DI SUCCESSO:
+1) Un utente occasionale vuole visualizzare le informazioni sui fornitori del negozio.
+2) L'utente seleziona il collegamento "Elenco fornitori". Il sistema mostra la lista dei fornitori, con il nome;
+3) L'utente seleziona un fornitore. Il sistema mostra i dettagli del fornitore e l'elenco dei prodotti che fornisce al negozio;
+4) L'utente compie il passo precedente un numero arbitrario di volte. Al termine, seleziona il collegamento "Torna indietro". Il sistema
+	mostra la pagina principale.
+	
+CASO D'USO 10 - Registrazione nuovo cliente
+SCENARIO PRINCIPALE DI SUCCESSO:
+1) Un utente vuole registrarsi al sito del negozio.
+2) L'utente seleziona il collegamento "Registrazione cliente". Il sistema mostra una form che contiene i campi da compilare;
+3) L'utente riempie i campi con i propri dati, e conferma l'inserimento selezionando il bottone "Conferma". Il sistema registra il nuovo
+	cliente e mostra una schermata di avvenuta registrazione. Da questo momento, l'utente può autenticarsi sul sito mediante la propria
+	email e password.
+ECCEZIONI:
+L'utente immette un indirizzo email già presente nella base di dati. Il sistema rifiuta la registrazione e annulla l'operazione.
