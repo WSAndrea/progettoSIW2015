@@ -3,27 +3,52 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <head>
 <title>Napster Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen"></link>
 </head>
 <body>
 	<f:view>
 		<h:form>
 			<h1>Navigazione sito</h1>
-			<div>
-				<h:link value="Login Amministratore" outcome="adminlogin" />
-			</div>
-			<div>
-				<h:link value="Login Cliente" outcome="customerlogin" />
-			</div>
-			<div>
-				<h:link value="Registrazione Cliente" outcome="newCustomer" />
-			</div>
-			<div>
-				<h:commandLink action="#{productController.retrieveAllProducts}"
-					value="Catalogo" />
-			</div>
+			<nav class="navbar navbar-inverse" role="navigation">
+
+ 
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Espandi barra di navigazione</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="index.html">Napster</a>
+  </div>
+  
+  
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><h:commandLink action="#{productController.retrieveAllProducts}"
+					value="Catalogo" /></li>
+			 <li class="active">><h:commandLink action="allProviders"
+					value="Fornitori" /></li>	
+     
+    </ul>
+    <p class="navbar-text navbar-right"></p>
+  </div>
+  
+</nav>
+			<div class="container">
+  <div class="row">
+    <div class="col-md-4"><h1></h1><h:link value="Login Amministratore" outcome="adminlogin" /><img width="100" src="amministratore.jpg" class="img-responsive"></img></div>
+    <div class="col-md-4"> <h1></h1><h:link value="Login Cliente" outcome="customerlogin" /><img width="100" src="cliente.jpg" class="img-responsive"></img></div>
+    <div class="col-md-4"><h1></h1><h:link value="Registrazione Cliente" outcome="newCustomer" /><img width="100" src="registrazione.jpg" class="img-responsive"></img></div>
+  </div>
+</div>
+			
 		</h:form>
 
 	</f:view>
+	<script src="//code.jquery.com/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
 

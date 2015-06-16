@@ -3,19 +3,30 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <head>
 <title>Pannello Amministratore</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen"></link>
 </head>
 <body>
 	<f:view>
 		<h1>Comandi</h1>
-		<ul>
-			<li><h:link value="Inserimento prodotto nel catalogo"
-					outcome="newProduct"></h:link></li>
-			<li><h:link value="Lista degli ordini effettuati"
-					outcome="allorders" /></li>
-			<li><h:link value="Evasione ordine"
-					outcome="nonevadedorders"></h:link></li>		
-			<li><h:link value="Esci dal pannello" outcome="index"></h:link></li>
-		</ul>
+		<h:form>
+		<div class="container">
+  <div class="row">
+    <div class="col-md-4"><h1></h1>
+					<img width="50" src="catalogo.jpg" class="img-responsive"></img><h:link value="Inserimento prodotto nel catalogo"
+					outcome="newProduct"></h:link>
+			</div>
+    <div class="col-md-4"> <h1></h1><img width="50" src="lista.jpg" class="img-responsive"></img><h:link value="Lista degli ordini effettuati"
+					outcome="allorders" />
+			</div>
+    <div class="col-md-4"><h1></h1><img width="50" src="freccia.jpg" class="img-responsive"></img><h:link value="Esci dal pannello" outcome="index"></h:link>
+			</div>
+	 </div>
+</div>		
+				
+		</h:form>	
 	</f:view>
+		<script src="//code.jquery.com/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
